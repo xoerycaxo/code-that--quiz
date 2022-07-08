@@ -16,28 +16,37 @@
 <body>
     <!--Link to igh score-->
     <a href="Highscores.html">View Highscores</a>
-    <!--Keeping my design between the wrapper-->
-    <div id="wrapper">
-        <!--div for the timer-->
-        <div id="currentTime">
-            <!--For the questions-->
-            <div id="Questions">
-                <h1>Coding Quiz Challenge</h1>
-                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-                    answers will penalize your score/time by ten seconds
-                </p>
-
-            </div>
+    <div class="start-screen">
+        <button id="start-button">Start</button>
+      </div>
+  
+      <div id="display-container">
+        <div class="header">
+          <div class="number-of-count">
+            <span class="number-of-question">1 of 4 Questions</span>
+          </div>
+  
+          <div class="timer-div">
+            <span class="time-left">15s</span>
+            <i class="fa-thin fa-timer"></i>
+          </div>
         </div>
-
-
-    </div>
-    
-
-</body>
-<footer>
-
-<script src="script.js"></script>
-
-</footer>
-</html>
+        <div id="container">
+  
+          <!-- questions and options -->
+        </div>
+  
+        <button id="next-button">Next</button>
+      </div>
+  
+      <div class="score-container hide">
+        <div id="user-score">Score</div>
+        <button id="restart">Restart</button>
+      </div>
+  <!-- score -->
+  
+      <!-- script -->
+  
+      <script src="script.js"></script>
+    </body>
+  </html>

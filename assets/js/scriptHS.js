@@ -15,31 +15,32 @@
 //Use GitHub Pages to publish the page to the web
 
 
-//Declared variables
-var highscore = document.querySelector("#highscore");
-var clear = document.querySelector("#clear");
-var goBack = document.querySelector("#goBack");
+const username = document.getElementById('username');
+const saveScoreBtn = document.getElementById('saveScoreBtn');
+const finalScore = document.getElementById('finalScore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
 
-//Event listener to clear scores
-clear.addEventListener("click", function () {
-    localStorage.clear();
-    location.reload();
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+const MAX_HIGH_SCORES = 500;
+
+finalScore.innerText = mostRecentScore;
+
+username.addEventListener('keyup', () => {
+    saveScoreBtn.disabled = !username.value;
 });
 
-// Retreives local stroage 
-var allScores = localStorage.getItem("allScores");
-allScores = JSON.parse(allScores);
+saveHighScore = (e) => {
+    e.preventDefault();
 
-if (allScores !== null) {
-    for (var i = 0; i < allScores.length; i++) {
-        var createLi = document.createElement("li");
-        createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-        highScore.appendChild(createLi);
+    const score = {
+        score: mostRecentScore,
+        name: username.value,
+    };
+    highScores.push(score);
+    highScores.sort((a, b) => b.score - a.score);
+    highScores.splice(5);
 
-    }
-}
-
-// Event listener to move to index page
-goBack.addEventListener("click", function () {
-    window.location.replace("./index.html");
-}); 
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    window.location.assign('/');
+}; 
